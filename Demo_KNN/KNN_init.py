@@ -1,7 +1,7 @@
 from Demo_KNN.model_selection import train_test_split
 from sklearn import datasets
 from Demo_KNN.KNNmode import KNNClassifier
-
+from Demo_KNN.metrics import accuracy_score
 iris = datasets.load_iris()
 
 X = iris.data   # 数据集
@@ -17,8 +17,9 @@ y_predict = my_knn_clf.predict(X_test)
 
 # print(y_predict)
 
-value =sum(y_predict == y_test)/len(y_test)
-print(value)
+value =accuracy_score(y_test,y_predict)
+value2 = my_knn_clf.socre(X_test,y_test)
+print(value2)
 
 
 
