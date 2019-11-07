@@ -34,11 +34,12 @@ praram_grid = [
         'n_neighbors':[i for i in range (1,11)]
     },
     {
-        'weights':['distance'],
-        'n_neighbors':[i for i in range (1,11)],
-        'p':[i for i in range(1,6)]
+        'weights':['distance'],      #
+        'n_neighbors':[i for i in range (1,11)],  # K的大小
+        'p':[i for i in range(1,6)]   # 幂的大小
     }
 ]
-grid_search = GridSearchCV(knn_clf,praram_grid)
+grid_search = GridSearchCV(knn_clf,praram_grid, n_jobs=6) #分类器，自定义标准，6核心运行
 grid_search.fit(x_train,y_tarin)
 print(grid_search.best_estimator_)
+knn_clf = grid_search.best_estimator_  # 得到最佳分类器
