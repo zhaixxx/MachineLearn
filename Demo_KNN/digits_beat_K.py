@@ -42,8 +42,8 @@ praram_grid = [
         # 幂的大小
     }
 ]
-grid_search = GridSearchCV(knn_clf,praram_grid, n_jobs=6, verbose=2)
-# 分类器，自定义标准，6核心运行,运行进度
+grid_search = GridSearchCV(knn_clf,praram_grid, n_jobs=-1, verbose=2)
+# 分类器，自定义标准，最大核心运行,运行进度
 grid_search.fit(x_train,y_tarin)
 print(grid_search.best_estimator_)
 
